@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { CustomButton } from "./components/CustomButton";
 import { Display } from "./components/Display";
-import { MagicNumber } from "./components/MagicNumber";
+//*import { MagicNumber } from "./components/MagicNumber";
 import "./App.css";
 
 const numbersLenght = 10;
 const buttonsNumbersArray = Array.from(Array(numbersLenght).keys()); //genera [1,2,3...numbersLenght] DRY: don't repeat yourself
+const buttonValue = [];
 console.log("array generato--->", buttonsNumbersArray);
 function App() {
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
@@ -33,10 +34,9 @@ function App() {
     </div>
   );
 }
-{
-  /**l'obiettivo è creare il tasto cancel, si può realizzare come nuova funzione in sostituzione di handleButton
+
+/**l'obiettivo è creare il tasto cancel, si può realizzare come nuova funzione in sostituzione di handleButton
         oppure potrei passare un paramentro a handleButton "isDelete". Questo parametro se è true mi fa entrare in un if dentro
         handleButton (dentro if avviene l'operazione di delete)*/
-}
 
 export default App;
