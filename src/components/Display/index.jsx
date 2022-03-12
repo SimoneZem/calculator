@@ -5,8 +5,8 @@ export const Display = ({
   isSecondNumber,
   secondSelectedNumber,
 }) => {
-  const firstNumber = Number(selectedNumber.join(""));
-  const secondNumber = Number(secondSelectedNumber.join(""));
+  const firstNumber = Number(selectedNumber?.join(""));
+  const secondNumber = Number(secondSelectedNumber?.join(""));
   return (
     <div>
       <p>{!isSecondNumber ? firstNumber : secondNumber}</p>
