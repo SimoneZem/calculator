@@ -34,7 +34,11 @@ function App() {
           onClick={() => handleButton(buttonValue)}
         />
       ))}
-      <Display selectedNumber={numbers} isSecondNumber={isSecondNumber} />
+      <Display
+        selectedNumber={numbers}
+        isSecondNumber={isSecondNumber}
+        secondSelectedNumber={secondNumber}
+      />
       {/**dobbiamo salvare una sequenza di numeri in un array, posso quindi utilizzare la funzione push() */}
       {/**dobbiamo unire i numeri */}
       {/**dopo aver instanziato l'array operations,abbiamo ciclato l'array stampando un custom button per ogni elemento dell'aray operations */}
