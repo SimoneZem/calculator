@@ -10,7 +10,7 @@ export const Display = ({
   return (
     <div>
       <p>{!isSecondNumber ? firstNumber : secondNumber}</p>
-      {/*Number trasforma da strina in numero; join torna una nuova stringa concatenata di tutti gli elementi 
+      {/*Number trasforma da stringa in numero; join torna una nuova stringa concatenata di tutti gli elementi 
       presenti nell'array*/}
       {/* ! ----> se isSecondNumber è true verrà valorizzato false  */}
     </div>

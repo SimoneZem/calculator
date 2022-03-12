@@ -6,7 +6,7 @@ import { operationsToDo } from "./utils";
 import "./App.css";
 
 const numbersLenght = 10;
-const buttonsNumbersArray = Array.from(Array(numbersLenght).keys()); //genera [1,2,3...numbersLenght] DRY: don't repeat yourself
+const buttonsNumbersArray = Array.from(Array(numbersLenght).keys()); //DRY: don't repeat yourself
 const operations = ["+", "-", "*", "/"];
 
 function App() {
@@ -27,7 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      {/**obiettivo: stampare tanti custom button per quanti elementi ci sono nell'array buttonsNumberArray */}
       {buttonsNumbersArray.map((buttonValue) => (
         <CustomButton
           btnText={buttonValue}
@@ -35,9 +34,6 @@ function App() {
         />
       ))}
       <Display selectedNumber={numbers} isSecondNumber={isSecondNumber} />
-      {/**dobbiamo salvare una sequenza di numeri in un array, posso quindi utilizzare la funzione push() */}
-      {/**dobbiamo unire i numeri */}
-      {/**dopo aver instanziato l'array operations,abbiamo ciclato l'array stampando un custom button per ogni elemento dell'aray operations */}
       {operations.map((operation) => (
         <CustomButton
           btnText={operation}
@@ -51,7 +47,6 @@ function App() {
             });
             setResult(operationResult);
           }}
-          //dobbiamo impostare il behaviour del custom button in base all'operazione
         />
       ))}
     </div>
