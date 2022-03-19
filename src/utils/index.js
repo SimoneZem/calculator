@@ -1,34 +1,19 @@
-export const operationsToDo = ({
-  operation,
-  numbers,
-  isSecondNumber,
-  secondNumber,
-  setIsSecondNumber,
-}) => {
+export const operationsToDo = ({ operation, setIsSecondNumber }) => {
   switch (operation) {
     case "+":
       setIsSecondNumber(true);
       break;
 
     case "-":
-      console.log(
-        ">>>> ~ file: App.jsx ~ line 20 ~ operationsToDo ~ operation",
-        operation
-      );
+      setIsSecondNumber(true);
       break;
 
     case "/":
-      console.log(
-        ">>>> ~ file: App.jsx ~ line 20 ~ operationsToDo ~ operation",
-        operation
-      );
+      setIsSecondNumber(true);
       break;
 
     case "*":
-      console.log(
-        ">>>> ~ file: App.jsx ~ line 20 ~ operationsToDo ~ operation",
-        operation
-      );
+      setIsSecondNumber(true);
       break;
 
     default:

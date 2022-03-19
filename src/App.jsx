@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CustomButton } from "./components/CustomButton";
 import { Display } from "./components/Display";
 import { operationsToDo } from "./utils";
-//*import { MagicNumber } from "./components/MagicNumber";
+
 import "./App.css";
 
 const numbersLenght = 10;
@@ -11,8 +11,10 @@ const operations = ["+", "-", "*", "/"];
 
 function App() {
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
+  console.log(">>>> ~ file: App.jsx ~ line 14 ~ App ~ numbers", numbers);
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
+
   console.log(
     ">>>> ~ file: App.jsx ~ line 16 ~ App ~ isSecondNumber",
     isSecondNumber
@@ -22,6 +24,10 @@ function App() {
 
   const handleButton = (newNumber) => {
     console.log("hai cliccato", newNumber);
+    if (isSecondNumber) {
+      setSecondNumber((numbers) => [...numbers, newNumber]);
+      return;
+    }
     setSelectedNumber((numbers) => [...numbers, newNumber]);
   };
 
@@ -46,10 +52,7 @@ function App() {
           btnText={operation}
           onClick={() => {
             const operationResult = operationsToDo({
-              numbers,
               operation,
-              secondNumber,
-              isSecondNumber,
               setIsSecondNumber,
             });
             setResult(operationResult);
