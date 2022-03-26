@@ -7,25 +7,21 @@ import "./App.css";
 
 const numbersLenght = 10;
 const buttonsNumbersArray = Array.from(Array(numbersLenght).keys()); //DRY: don't repeat yourself
-const operations = ["+", "-", "*", "/"];
+const operations = ["+", "-", "*", "/", "="];
 
 function App() {
+  const [displayResult, setDisplayResult] = useState(false);
+  const [operationChoosed, setOperationChoosed] = useState("");
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
-  console.log(">>>> ~ file: App.jsx ~ line 14 ~ App ~ numbers", numbers);
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
 
-  console.log(
-    ">>>> ~ file: App.jsx ~ line 16 ~ App ~ isSecondNumber",
-    isSecondNumber
-  );
-
   const [result, setResult] = useState(null);
+  console.log(">>>> ~ file: App.jsx ~ line 20 ~ App ~ result", result);
 
   const handleButton = (newNumber) => {
-    console.log("hai cliccato", newNumber);
     if (isSecondNumber) {
-      setSecondNumber((numbers) => [...numbers, newNumber]);
+      setSecondNumber((numbers) => [...secondNumber, newNumber]);
       return;
     }
     setSelectedNumber((numbers) => [...numbers, newNumber]);
@@ -52,10 +48,17 @@ function App() {
           btnText={operation}
           onClick={() => {
             const operationResult = operationsToDo({
+              setResult,
+              setDisplayResult,
+              numbers,
+              secondNumber,
               operation,
               setIsSecondNumber,
+              operationChoosed,
             });
-            setResult(operationResult);
+            if (operation !== "=") {
+              setOperationChoosed(operation);
+            }
           }}
         />
       ))}
