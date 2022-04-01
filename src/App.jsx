@@ -28,40 +28,45 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {buttonsNumbersArray.map((buttonValue) => (
-        <CustomButton
-          btnText={buttonValue}
-          onClick={() => handleButton(buttonValue)}
-        />
-      ))}
-      <Display
-        selectedNumber={numbers}
-        isSecondNumber={isSecondNumber}
-        secondSelectedNumber={secondNumber}
-      />
-      {/**dobbiamo salvare una sequenza di numeri in un array, posso quindi utilizzare la funzione push() */}
-      {/**dobbiamo unire i numeri */}
-      {/**dopo aver instanziato l'array operations,abbiamo ciclato l'array stampando un custom button per ogni elemento dell'aray operations */}
-      {operations.map((operation) => (
-        <CustomButton
-          btnText={operation}
-          onClick={() => {
-            const operationResult = operationsToDo({
-              setResult,
-              setDisplayResult,
-              numbers,
-              secondNumber,
-              operation,
-              setIsSecondNumber,
-              operationChoosed,
-            });
-            if (operation !== "=") {
-              setOperationChoosed(operation);
-            }
-          }}
-        />
-      ))}
+    <div className="wrapper">
+      <div className="App">
+        <div className="digit-keys">
+          {buttonsNumbersArray.map((buttonValue) => (
+            <CustomButton
+              isNumber
+              btnText={buttonValue}
+              onClick={() => handleButton(buttonValue)}
+            />
+          ))}
+          {operations.map((operation) => (
+            <CustomButton
+              btnText={operation}
+              onClick={() => {
+                const operationResult = operationsToDo({
+                  setResult,
+                  setDisplayResult,
+                  numbers,
+                  secondNumber,
+                  operation,
+                  setIsSecondNumber,
+                  operationChoosed,
+                });
+                if (operation !== "=") {
+                  setOperationChoosed(operation);
+                }
+              }}
+            />
+          ))}
+          <Display
+            selectedNumber={numbers}
+            isSecondNumber={isSecondNumber}
+            secondSelectedNumber={secondNumber}
+          />
+          {/**dobbiamo salvare una sequenza di numeri in un array, posso quindi utilizzare la funzione push() */}
+          {/**dobbiamo unire i numeri */}
+          {/**dopo aver instanziato l'array operations,abbiamo ciclato l'array stampando un custom button per ogni elemento dell'aray operations */}
+        </div>
+      </div>
     </div>
   );
 }

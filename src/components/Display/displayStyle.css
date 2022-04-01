@@ -1,0 +1,14 @@
+.display-stile {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #2b293d;
+  padding: 15px;
+  border: 1px solid black;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  font-family: "roboto";
+  border: 1px solid white;
+  border-radius: 5px;
+}

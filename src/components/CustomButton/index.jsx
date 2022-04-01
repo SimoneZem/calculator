@@ -10,3 +10,6 @@ export const CustomButton = ({ btnText, onClick }) => {
     </div>
   );
 };
+
+/* <div className={isNumber ? "button-container" : "  "} onClick={onClick}>
+{" "} */

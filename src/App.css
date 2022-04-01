@@ -1,5 +1,24 @@
+.wrapper {
+  height: 100vh;
+  font-size: 20px;
+  justify-content: center;
+  align-content: center;
+  font-family: "roboto";
+  overflow: scroll;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  width: 310px;
+  padding-left: 35%;
+  margin-top: 15%;
+}
+
+.digit-keys {
+  background: whitesmoke;
+  display: flex;
+
+  flex-wrap: wrap-reverse;
 }
 
 .App-logo {
