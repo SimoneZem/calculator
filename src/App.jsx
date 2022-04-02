@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { CustomButton } from "./components/CustomButton";
 import { Display } from "./components/Display";
 import { operationsToDo } from "./utils";
-
 import "./App.css";
 
 const numbersLenght = 10;
 const buttonsNumbersArray = Array.from(Array(numbersLenght).keys()); //DRY: don't repeat yourself
-const operations = ["+", "-", "*", "/", "="];
+const operations = ["+", "-", "*", "/", "=", "C"];
 
 function App() {
   const [displayResult, setDisplayResult] = useState(false);
@@ -15,8 +14,11 @@ function App() {
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
+  //attempt for delete button
+  //operazioni sugli array (pop), isSecondNumber, setSelectedNumber, setSecondNumber. Tutto dentro operationsToDo
 
   const [result, setResult] = useState(null);
+
   console.log(">>>> ~ file: App.jsx ~ line 20 ~ App ~ result", result);
 
   const handleButton = (newNumber) => {
@@ -58,6 +60,7 @@ function App() {
             />
           ))}
           <Display
+            result={result}
             selectedNumber={numbers}
             isSecondNumber={isSecondNumber}
             secondSelectedNumber={secondNumber}

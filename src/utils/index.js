@@ -11,6 +11,8 @@ const operations = ({ parsedArray1, parsedArray2, operationChoosed }) => {
 
     case "*":
       return parsedArray1 * parsedArray2;
+
+    case "C":
   }
 };
 
