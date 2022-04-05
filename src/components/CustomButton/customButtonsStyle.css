@@ -1,10 +1,28 @@
 .button-container {
   display: block;
-  padding: 20px;
-  border: 1px solid black;
-  width: 35px;
-  background-color: rgb(184, 172, 172);
-  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgb(185, 184, 184);
+  width: 20px;
+  height: 20px;
+  background-color: rgb(242, 242, 242);
   cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.larger-button {
+  width: 104px;
+}
+
+.operation {
+  background-color: orange;
+  color: white;
+}
+
+.operation-2 {
+  background-color: rgb(185, 184, 184);
+  color: black;
+  border: 1px solid white;
+  display: flex;
   text-align: center;
 }

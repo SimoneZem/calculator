@@ -1,15 +1,12 @@
 import React from "react";
 import "./customButtonsStyle.css";
 
-export const CustomButton = ({ btnText, onClick }) => {
+export const CustomButton = ({ btnText, onClick, customClass }) => {
   console.log("btnText=>", btnText);
   return (
-    <div className="button-container" onClick={onClick}>
+    <div className={`button-container ${customClass}`} onClick={onClick}>
       {" "}
       {btnText}{" "}
     </div>
   );
 };
-
-/* <div className={isNumber ? "button-container" : "  "} onClick={onClick}>
-{" "} */
