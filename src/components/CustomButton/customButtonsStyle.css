@@ -26,3 +26,8 @@
   display: flex;
   text-align: center;
 }
+
+.equal-button {
+  width: 100%;
+  background-color: aquamarine;
+}

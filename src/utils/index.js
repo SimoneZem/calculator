@@ -1,4 +1,8 @@
-const operations = ({ parsedArray1, parsedArray2, operationChoosed }) => {
+export const operations = ({
+  parsedArray1,
+  parsedArray2,
+  operationChoosed,
+}) => {
   switch (operationChoosed) {
     case "+":
       return parsedArray1 + parsedArray2;
@@ -22,10 +26,6 @@ export const operationsToDo = ({
   setIsSecondNumber,
   operationChoosed,
 }) => {
-  console.log(">>>> ~ file: index.js ~ line 9 ~ operation", operation);
-  console.log(">>>> ~ file: index.js ~ line 9 ~ numbers", numbers);
-  console.log(">>>> ~ file: index.js ~ line 9 ~ secondNumber", secondNumber);
-
   switch (operation) {
     case "+":
       setIsSecondNumber(true);
@@ -41,18 +41,6 @@ export const operationsToDo = ({
 
     case "*":
       setIsSecondNumber(true);
-      break;
-
-    case "=":
-      const parsedArray1 = Number(numbers?.join(""));
-      const parsedArray2 = Number(secondNumber?.join(""));
-      const result = operations({
-        parsedArray1,
-        parsedArray2,
-        operationChoosed,
-      });
-      setResult(result);
-
       break;
 
     default:

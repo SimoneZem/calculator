@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CustomButton } from "./components/CustomButton";
 import { Display } from "./components/Display";
-import { operationsToDo } from "./utils";
+import { operationsToDo, operations as computeOperation } from "./utils";
 
 import "./App.css";
 
@@ -17,6 +17,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
   const [result, setResult] = useState(null);
+  const weHaveResult = result !== null;
 
   const handleButton = (newNumber) => {
     if (isSecondNumber) {
@@ -26,10 +27,32 @@ function App() {
     setSelectedNumber((numbers) => [...numbers, newNumber]);
   };
 
+  const showResult = () => {
+    const parsedArray1 = Number(numbers?.join(""));
+    const parsedArray2 = Number(secondNumber?.join(""));
+    const result = computeOperation({
+      parsedArray1,
+      parsedArray2,
+      operationChoosed,
+    });
+    setResult(result);
+  };
+
+  const returnToSetFirstNumber = () => {
+    setResult(null);
+    setSecondNumber(false);
+    setSelectedNumber(0);
+  };
+
+  const handleNumericKeypad = (buttonValue) => {
+    weHaveResult ? returnToSetFirstNumber() : handleButton(buttonValue);
+  };
+
   return (
     <div className="main-container">
       <div className="calculator-container">
         <Display
+          result={result}
           selectedNumber={numbers}
           isSecondNumber={isSecondNumber}
           secondSelectedNumber={secondNumber}
@@ -40,6 +63,7 @@ function App() {
               {operations_2.map((buttonValue) => (
                 <CustomButton
                   customClass="operation-2"
+                  customClass2={buttonValue === "=" ? "equal-button" : ""}
                   isNumber
                   btnText={buttonValue}
                   onClick={() => handleButton(buttonValue)}
@@ -51,12 +75,12 @@ function App() {
                 <CustomButton
                   customClass={buttonValue === 0 ? "larger-button" : ""}
                   btnText={buttonValue}
-                  onClick={() => handleButton(buttonValue)}
+                  onClick={() => handleNumericKeypad(buttonValue)}
                 />
               ))}
             </div>
             <div className="row-left">
-              <CustomButton isNumber btnText="=" />
+              <CustomButton onClick={showResult} isNumber btnText="=" />
             </div>
           </div>
           <div className="col">
