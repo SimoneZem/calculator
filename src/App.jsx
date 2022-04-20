@@ -38,14 +38,32 @@ function App() {
     setResult(result);
   };
 
-  const returnToSetFirstNumber = () => {
+  const returnToSetFirstNumber = (buttonValue) => {
     setResult(null);
-    setSecondNumber(false);
-    setSelectedNumber(0);
+    setIsSecondNumber(false);
+    setSecondNumber([]);
+    setSelectedNumber([buttonValue]);
   };
 
   const handleNumericKeypad = (buttonValue) => {
-    weHaveResult ? returnToSetFirstNumber() : handleButton(buttonValue);
+    weHaveResult
+      ? returnToSetFirstNumber(buttonValue)
+      : handleButton(buttonValue);
+  };
+
+  const handleOperation = (operation) => {
+    operationsToDo({
+      setResult,
+      setDisplayResult,
+      numbers,
+      secondNumber,
+      operation,
+      setIsSecondNumber,
+      operationChoosed,
+    });
+    if (operation !== "=") {
+      setOperationChoosed(operation);
+    }
   };
 
   return (
@@ -65,6 +83,7 @@ function App() {
                   customClass="operation-2"
                   customClass2={buttonValue === "=" ? "equal-button" : ""}
                   isNumber
+                  key={buttonValue}
                   btnText={buttonValue}
                   onClick={() => handleButton(buttonValue)}
                 />
@@ -73,6 +92,7 @@ function App() {
             <div className="row-left-numbers">
               {buttonsNumbersArray.map((buttonValue) => (
                 <CustomButton
+                  key={buttonValue}
                   customClass={buttonValue === 0 ? "larger-button" : ""}
                   btnText={buttonValue}
                   onClick={() => handleNumericKeypad(buttonValue)}
@@ -86,22 +106,10 @@ function App() {
           <div className="col">
             {operations.map((operation) => (
               <CustomButton
+                key={operation}
                 customClass="operation"
                 btnText={operation}
-                onClick={() => {
-                  operationsToDo({
-                    setResult,
-                    setDisplayResult,
-                    numbers,
-                    secondNumber,
-                    operation,
-                    setIsSecondNumber,
-                    operationChoosed,
-                  });
-                  if (operation !== "=") {
-                    setOperationChoosed(operation);
-                  }
-                }}
+                onClick={() => handleOperation(operation)}
               />
             ))}
           </div>
