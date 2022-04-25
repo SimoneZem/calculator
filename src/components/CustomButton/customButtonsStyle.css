@@ -31,3 +31,8 @@
   width: 100%;
   background-color: aquamarine;
 }
+
+.result-button {
+  width: 189px;
+  position: absolute;
+}

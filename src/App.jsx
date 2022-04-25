@@ -53,17 +53,16 @@ function App() {
 
   const handleOperation = (operation) => {
     operationsToDo({
-      setResult,
-      setDisplayResult,
+      isSecondNumber,
       numbers,
       secondNumber,
       operation,
       setIsSecondNumber,
       operationChoosed,
+      setSelectedNumber,
+      setSecondNumber,
     });
-    if (operation !== "=") {
-      setOperationChoosed(operation);
-    }
+    setOperationChoosed(operation);
   };
 
   return (
@@ -85,7 +84,7 @@ function App() {
                   isNumber
                   key={buttonValue}
                   btnText={buttonValue}
-                  onClick={() => handleButton(buttonValue)}
+                  onClick={() => handleOperation(buttonValue)}
                 />
               ))}
             </div>
@@ -100,7 +99,12 @@ function App() {
               ))}
             </div>
             <div className="row-left">
-              <CustomButton onClick={showResult} isNumber btnText="=" />
+              <CustomButton
+                customClass={"result-button"}
+                onClick={showResult}
+                isNumber
+                btnText="="
+              />
             </div>
           </div>
           <div className="col">

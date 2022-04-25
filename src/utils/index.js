@@ -19,12 +19,13 @@ export const operations = ({
 };
 
 export const operationsToDo = ({
-  setResult,
+  setIsSecondNumber,
+  isSecondNumber,
   numbers,
   secondNumber,
   operation,
-  setIsSecondNumber,
-  operationChoosed,
+  setSelectedNumber,
+  setSecondNumber,
 }) => {
   switch (operation) {
     case "+":
@@ -41,6 +42,40 @@ export const operationsToDo = ({
 
     case "*":
       setIsSecondNumber(true);
+      break;
+
+    case "c":
+      if (isSecondNumber) {
+        if (secondNumber.length <= 1) {
+          setSecondNumber([0]);
+          return;
+        }
+        console.log(
+          ">>>> ~ file: index.js ~ line 50 ~ secondNumber",
+          secondNumber
+        );
+        const newSecondNumber = secondNumber.splice(-1);
+
+        setSecondNumber(newSecondNumber);
+        return;
+      }
+
+      if (numbers.length <= 1) {
+        setSelectedNumber([0]);
+        return;
+      }
+
+      const newNumber = numbers.splice(-1);
+      setSelectedNumber(newNumber);
+      break;
+
+    case "del":
+      break;
+
+    case "%":
+      break;
+
+    case ".":
       break;
 
     default:
