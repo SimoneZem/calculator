@@ -36,6 +36,7 @@ function App() {
       operationChoosed,
     });
     setResult(result);
+    console.log("🚀 ~ file: App.jsx ~ line 41 ~ showResult ~ result", result);
   };
 
   const returnToSetFirstNumber = (buttonValue) => {
@@ -51,7 +52,7 @@ function App() {
       : handleButton(buttonValue);
   };
 
-  const handleOperation = (operation) => {
+  const handleOperation = (operation, isSecondOperation) => {
     operationsToDo({
       isSecondNumber,
       numbers,
@@ -62,7 +63,7 @@ function App() {
       setSelectedNumber,
       setSecondNumber,
     });
-    setOperationChoosed(operation);
+    if (!isSecondOperation) setOperationChoosed(operation);
   };
 
   return (
@@ -84,7 +85,9 @@ function App() {
                   isNumber
                   key={buttonValue}
                   btnText={buttonValue}
-                  onClick={() => handleOperation(buttonValue)}
+                  onClick={() =>
+                    handleOperation(buttonValue, { isSecondOperation: true })
+                  }
                 />
               ))}
             </div>

@@ -46,26 +46,21 @@ export const operationsToDo = ({
 
     case "c":
       if (isSecondNumber) {
-        if (secondNumber.length <= 1) {
+        if (secondNumber.length === 0) {
           setSecondNumber([0]);
           return;
         }
-        console.log(
-          ">>>> ~ file: index.js ~ line 50 ~ secondNumber",
-          secondNumber
-        );
-        const newSecondNumber = secondNumber.splice(-1);
-
+        const newSecondNumber = secondNumber.slice(0, -1);
         setSecondNumber(newSecondNumber);
         return;
       }
 
-      if (numbers.length <= 1) {
+      if (numbers.length === 0) {
         setSelectedNumber([0]);
         return;
       }
 
-      const newNumber = numbers.splice(-1);
+      const newNumber = numbers.slice(0, -1);
       setSelectedNumber(newNumber);
       break;
 
