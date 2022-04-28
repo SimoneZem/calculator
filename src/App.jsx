@@ -11,12 +11,12 @@ const operations = ["+", "-", "*", "/"];
 const operations_2 = ["c", "del", "%", "."];
 
 function App() {
-  const [displayResult, setDisplayResult] = useState(false);
   const [operationChoosed, setOperationChoosed] = useState("");
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
   const [result, setResult] = useState(null);
+
   const weHaveResult = result !== null;
 
   const handleButton = (newNumber) => {
@@ -51,18 +51,20 @@ function App() {
       : handleButton(buttonValue);
   };
 
-  const handleOperation = (operation) => {
+  const handleOperation = (operation, isSecondOperation) => {
     operationsToDo({
       isSecondNumber,
       numbers,
       secondNumber,
       operation,
-      setIsSecondNumber,
       operationChoosed,
       setSelectedNumber,
+      setIsSecondNumber,
       setSecondNumber,
+      setOperationChoosed,
+      setResult,
     });
-    setOperationChoosed(operation);
+    if (!isSecondOperation) setOperationChoosed(operation);
   };
 
   return (
@@ -84,7 +86,9 @@ function App() {
                   isNumber
                   key={buttonValue}
                   btnText={buttonValue}
-                  onClick={() => handleOperation(buttonValue)}
+                  onClick={() =>
+                    handleOperation(buttonValue, { isSecondOperation: true })
+                  }
                 />
               ))}
             </div>
