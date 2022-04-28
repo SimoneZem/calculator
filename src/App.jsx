@@ -11,12 +11,12 @@ const operations = ["+", "-", "*", "/"];
 const operations_2 = ["c", "del", "%", "."];
 
 function App() {
-  const [displayResult, setDisplayResult] = useState(false);
   const [operationChoosed, setOperationChoosed] = useState("");
   const [numbers, setSelectedNumber] = useState([]); //array vuoto
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
   const [result, setResult] = useState(null);
+
   const weHaveResult = result !== null;
 
   const handleButton = (newNumber) => {
@@ -58,10 +58,12 @@ function App() {
       numbers,
       secondNumber,
       operation,
-      setIsSecondNumber,
       operationChoosed,
       setSelectedNumber,
+      setIsSecondNumber,
       setSecondNumber,
+      setOperationChoosed,
+      setResult,
     });
     if (!isSecondOperation) setOperationChoosed(operation);
   };

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const operations = ({
   parsedArray1,
   parsedArray2,
@@ -19,13 +21,15 @@ export const operations = ({
 };
 
 export const operationsToDo = ({
-  setIsSecondNumber,
   isSecondNumber,
   numbers,
   secondNumber,
   operation,
   setSelectedNumber,
+  setIsSecondNumber,
   setSecondNumber,
+  setOperationChoosed,
+  setResult,
 }) => {
   switch (operation) {
     case "+":
@@ -47,7 +51,7 @@ export const operationsToDo = ({
     case "c":
       if (isSecondNumber) {
         if (secondNumber.length === 0) {
-          setSecondNumber([0]);
+          setSecondNumber([""]);
           return;
         }
         const newSecondNumber = secondNumber.slice(0, -1);
@@ -65,6 +69,11 @@ export const operationsToDo = ({
       break;
 
     case "del":
+      setSelectedNumber([]);
+      setIsSecondNumber(false);
+      setSecondNumber([]);
+      setOperationChoosed("");
+      setResult(null);
       break;
 
     case "%":
