@@ -16,6 +16,7 @@ function App() {
   const [secondNumber, setSecondNumber] = useState([]);
   const [isSecondNumber, setIsSecondNumber] = useState(false);
   const [result, setResult] = useState(null);
+  const [useComma, setUseComma] = useState(false);
 
   const weHaveResult = result !== null;
 
@@ -28,6 +29,9 @@ function App() {
   };
 
   const showResult = () => {
+    if (!isSecondNumber) {
+      return;
+    }
     const parsedArray1 = Number(numbers?.join(""));
     const parsedArray2 = Number(secondNumber?.join(""));
     const result = computeOperation({
@@ -47,6 +51,8 @@ function App() {
   };
 
   const handleNumericKeypad = (buttonValue) => {
+    if (useComma) {
+    }
     weHaveResult
       ? returnToSetFirstNumber(buttonValue)
       : handleButton(buttonValue);
@@ -54,6 +60,7 @@ function App() {
 
   const handleOperation = (operation, isSecondOperation) => {
     operationsToDo({
+      setUseComma,
       isSecondNumber,
       numbers,
       secondNumber,

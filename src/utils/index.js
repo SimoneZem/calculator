@@ -80,6 +80,15 @@ export const operationsToDo = ({
       break;
 
     case ".":
+      if (isSecondNumber) {
+        const floatSecondNumber = [...secondNumber, "."].join("");
+        console.log(
+          ">>>> ~ file: index.js ~ line 85 ~ floatSecondNumber",
+          floatSecondNumber
+        );
+        return;
+      }
+
       break;
 
     default:
