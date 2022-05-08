@@ -30,6 +30,7 @@ export const operationsToDo = ({
   setSecondNumber,
   setOperationChoosed,
   setResult,
+  setUseComma,
 }) => {
   switch (operation) {
     case "+":
@@ -77,18 +78,28 @@ export const operationsToDo = ({
       break;
 
     case "%":
+      if (secondNumber !== 0) {
+        const moduloSecodNumber = secondNumber / 100;
+        setSecondNumber(moduloSecodNumber);
+
+        if (numbers !== 0) {
+          const moduloFirstnumber = numbers / 100;
+          setSelectedNumber(moduloFirstnumber);
+        }
+        return;
+      }
       break;
 
     case ".":
       if (isSecondNumber) {
         const floatSecondNumber = [...secondNumber, "."].join("");
-        console.log(
-          ">>>> ~ file: index.js ~ line 85 ~ floatSecondNumber",
-          floatSecondNumber
-        );
+        setUseComma(true);
+        setSecondNumber(floatSecondNumber);
         return;
       }
-
+      const floatNumber = [...numbers, "."].join("");
+      setUseComma(true);
+      setSelectedNumber(floatNumber);
       break;
 
     default:

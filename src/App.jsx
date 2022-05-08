@@ -40,7 +40,6 @@ function App() {
       operationChoosed,
     });
     setResult(result);
-    console.log("🚀 ~ file: App.jsx ~ line 41 ~ showResult ~ result", result);
   };
 
   const returnToSetFirstNumber = (buttonValue) => {
@@ -51,8 +50,6 @@ function App() {
   };
 
   const handleNumericKeypad = (buttonValue) => {
-    if (useComma) {
-    }
     weHaveResult
       ? returnToSetFirstNumber(buttonValue)
       : handleButton(buttonValue);
@@ -83,6 +80,7 @@ function App() {
           selectedNumber={numbers}
           isSecondNumber={isSecondNumber}
           secondSelectedNumber={secondNumber}
+          useComma={useComma}
         />
         <div className="row">
           <div className="col-left">

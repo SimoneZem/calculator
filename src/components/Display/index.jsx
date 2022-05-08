@@ -6,9 +6,14 @@ export const Display = ({
   selectedNumber,
   isSecondNumber,
   secondSelectedNumber,
+  useComma,
 }) => {
-  const firstNumber = Number(selectedNumber?.join(""));
-  const secondNumber = Number(secondSelectedNumber?.join(""));
+  const firstNumber = useComma
+    ? selectedNumber
+    : Number(selectedNumber?.join(""));
+  const secondNumber = useComma
+    ? secondSelectedNumber
+    : Number(secondSelectedNumber?.join(""));
   const weHaveResult = result !== null;
   return (
     <div className="display-stile ">
